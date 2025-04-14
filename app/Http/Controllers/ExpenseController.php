@@ -5,14 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Expense;
 use Illuminate\Http\Request;
 
-class ExpenseController
+class ExpenseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $expenses = Expense::with('category')->get();
+        return view('expenses.index', compact('expenses'));
     }
 
     /**

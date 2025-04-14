@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Models\Category;
 
-class CategoryController
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $categories = Category::with('expenses')->get();
+        return view('categories.index', compact('categories'));
     }
 
     /**
